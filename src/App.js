@@ -1,23 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import QuizBoard from './components/quizboard';
+import quiz from './quiz';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>
+        Reactで簡単なクイズ画面作成
+      </h1>
+      {
+        quiz.map(q => 
+          <QuizBoard
+            key={q.id}
+            id={q.id}
+            statement={q.statement}
+            type={q.type}
+            choices={q.choices}
+            answer={q.answer}
+          />
+        )
+      }
     </div>
   );
 }
